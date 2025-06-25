@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recharge Card Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: chartreuse;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 200px;
+  height:  200px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo.active {
+  border-color: green;
+  box-shadow: 0 0 10px green;
+}
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  width: 250px;
+  font-size: 20px;
+}
+input:focus-within{
+  outline: green;
+  box-shadow: 0 0 10px green;
+}
+button {
+  padding: 15px 25px;
+  font-size: 18px;
+  margin-left: 10px;
+  background-color:green;
+  border: none;
+  border-radius: 4px;
+}
+
+.output {
+  margin-top: 50px;
+  font-size: 25px;
+  color: white;
+}
+  </style>
+</head>
+<body>
+  <h2>Select a Network</h2>
+  <div class="logos">
+    <img src="https://i.pinimg.com/736x/0a/f0/0e/0af00e1d78100d4019d3344873902d5a.jpg" alt="MTN" class="logo" data-network="MTN">
+    <img src="https://i.pinimg.com/736x/2a/f6/78/2af678e546e5283ddcb79d254eac8433.jpg" alt="GLO" class="logo" data-network="GLO">
+    <img src="https://i.pinimg.com/736x/1e/fc/e0/1efce0fb0bc2604ccdbde88c34c59da8.jpg" alt="Airtel" class="logo" data-network="Airtel">
+    <img src="https://i.pinimg.com/736x/ec/20/99/ec2099c13db87c9f063be411d5d267cd.jpg" alt="9mobile" class="logo" data-network="9mobile">
+  </div>
+
+  <div class="input-section">
+    <input type="number" id="price" placeholder="Enter amount (e.g. 100)">
+    <button onclick="generateCard()">Generate Card</button>
+  </div>
+
+  <div id="output" class="output"></div>
+</body>
+</html>
+
+
+<script>
+
+let selectedNetwork = "";
+
+let logos = document.getElementsByClassName("logo");
+
+
+for (let i = 0; i < logos.length; i++) {
+  logos[i].onclick = function () {
+    
+    for (let i = 0; i < logos.length; i++) {
+      logos[i].classList.remove("active");
+    }
+
+   
+    this.classList.add("active");
+
+   
+    selectedNetwork = this.getAttribute("data-network");
+  };
+}
+
+
+function generateCard() {
+  
+  let price = document.getElementById("price").value;
+
+  let output = document.getElementById("output");
+
+  if (selectedNetwork === "") {
+    alert("Please click a network logo");
+    return;
+  }
+
+  if (price === "" || Number(price) <= 0) {
+    alert("Please enter a valid price");
+    return;
+  }
+
+  let card = "";
+  for (let i = 0; i < 12; i++) {
+    card += Math.floor(Math.random() * 10); // number from 0–9
+  }
+
+  output.innerHTML =
+    "Card: " + card + "<br>" +
+    "Price: ₦" + price + "<br>" +
+    "Network: " + selectedNetwork;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //// Start with no network selected -->
+ <!-- // Get all the network pictures (logos) -->
